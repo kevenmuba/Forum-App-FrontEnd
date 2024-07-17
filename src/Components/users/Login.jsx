@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //import { ClipLoader } from "react-spinners";
 import axios from '../../axiosConfig';
 
-function Login({setCurrentPage}) {
+function Login() {
 
   const navigate = useNavigate();
 
@@ -37,8 +37,8 @@ function Login({setCurrentPage}) {
         alert('Login Successful!')
          console.log(data)
         localStorage.setItem("token", data.token)
-       // navigate('/')
-      //  window.location.reload();
+        navigate('/')
+        window.location.reload();
       } catch (err) {
         console.log(err?.response?.data)
         alert("Something went wrong!")
@@ -49,7 +49,7 @@ function Login({setCurrentPage}) {
     <div>
       <h3 className='m-3'>Login to your account</h3>
       <p className='mb-5'>Don't have an account? {" "}
-        <a href="#" onClick={() => setCurrentPage("signup")} className='fw-semibold text-decoration-non text-warning'>Create a new account</a>
+        <Link to="/register"  className='fw-semibold text-decoration-non text-warning'>Create a new account</Link>
       </p>
     </div>
 

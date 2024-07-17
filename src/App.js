@@ -1,12 +1,16 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import Home from './pages/home/Home';
-import Login from './pages/LandingLayout/Login';
-import Register from './pages/LandingLayout/Register';
+import Login from './Components/users/Login';
+import Register from './Components/users/Register';
 import axios from './axiosConfig';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import AskQuestion from './Components/questions/AskQuestion';
+import Answers from './Components/answers/Answers';
 
 export const AppState = createContext();
+ 
+
 function App() {
   const navigate = useNavigate()
   const token = localStorage.getItem("token")
@@ -38,6 +42,9 @@ function App() {
         <Route path='/' element = {<Home/>}/>
         <Route path='/login' element = {<Login/>}/>
         <Route path='/register' element = {<Register/>}/>
+        <Route path='/questions' element = {<AskQuestion/>}/>
+        <Route path='/answers' element = {<Answers/>}/>
+       
 
       </Routes>
       </AppState.Provider>

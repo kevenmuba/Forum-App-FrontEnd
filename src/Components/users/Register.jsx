@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import axios from '../../axiosConfig'
 import React, { useRef } from 'react'
 // useref is react builtin props
@@ -32,6 +32,8 @@ function Register() {
        alert('Please provide all required information')
       return;
     }
+
+    
     try {
       await axios.post('/users/register', {
         username: usernameValue,
@@ -41,7 +43,7 @@ function Register() {
         password: passValue
       })
       alert('Registration Successful, please login!')
-      navigate('/login')
+      navigate('/')
     } catch (err) {
      // alert(err.message)
      alert("Username or Email already in use.")
@@ -54,7 +56,7 @@ function Register() {
     <div>
       <h3 className='m-3'>Join the network</h3>
       <p className='mb-5'>Already have an account?{" "}
-        <a href="#"  className='fw-semibold text-decoration-non text-warning'> Sing in</a>
+        <Link to="/login"  className='fw-semibold text-decoration-non text-warning'> Sing in</Link>
       </p>
     </div>
 
@@ -78,7 +80,7 @@ function Register() {
         <button type='submit' className='btn btn-primary action__btn fs-5 fw-semibold'>Agree and join</button>
         <div className='mt-3'>
           <p className='d-flex justify-content-center'>
-            <a href="#" className='fw-semibold text-decoration-none text-warning'>Already have an account?</a>
+            <Link to="/login" className='fw-semibold text-decoration-none text-warning'>Already have an account?</Link>
           </p>
         </div>
       </div>
